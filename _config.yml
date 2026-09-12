@@ -1,0 +1,22 @@
+title: dacotton.dev
+url: https://dacotton.dev
+lang: ko
+timezone: Asia/Seoul
+permalink: /log/:year/:month/:day/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md

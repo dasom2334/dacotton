@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% assign p = site.data.projects | where: "id", page.project | first %}
+<main class="page doc">
+  <nav class="crumb"><a href="/">◀ COTTON</a>{% if p %} <span class="sep">/</span> <a href="/projects/{{ p.id }}/">{{ p.name }}</a>{% endif %}</nav>
+  <header class="dochd">
+    <time class="pst" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+    <h1 class="pname">{{ page.title }}</h1>
+  </header>
+  <article class="body pxb">{{ content }}</article>
+</main>

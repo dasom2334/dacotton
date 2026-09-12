@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<main class="page">
+  <header class="hd">
+    <div class="row">
+      <img src="{{ '/assets/img/tree.png' | relative_url }}" alt="" class="tree" width="23" height="62">
+      <h1 class="name">COTTON</h1>
+      <img src="{{ '/assets/img/plant.png' | relative_url }}" alt="" class="plant" width="10" height="9">
+    </div>
+    <p class="role">백엔드 개발자</p>
+    <a href="https://github.com/dasom2334" class="gh">github.com/dasom2334</a>
+  </header>
+
+  <section class="pxb box" id="projects">
+    <ul class="menu" role="tablist" aria-label="프로젝트">
+      {% for p in site.data.projects %}
+      <li>
+        <a href="/projects/{{ p.id }}/" role="tab" id="tab-{{ p.id }}" aria-controls="pv-{{ p.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-project="{{ p.id }}"{% if forloop.first %} class="on"{% endif %}>
+          <span class="cur" aria-hidden="true"></span>
+          <span>{{ p.name }}</span>
+          <span class="st">{{ p.status }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% for p in site.data.projects %}
+    <div class="preview" id="pv-{{ p.id }}" role="tabpanel" aria-labelledby="tab-{{ p.id }}"{% unless forloop.first %} hidden{% endunless %}>
+      {% if p.thumb %}
+      <div class="thumb pxb"><img src="{{ p.thumb | relative_url }}" alt="{{ p.name }} 화면"{% if p.pixel %} class="pixel"{% endif %}></div>
+      {% endif %}
+      <div><span class="pname">{{ p.name }}</span><span class="pst">{{ p.status }}</span></div>
+      <p class="desc">{{ p.desc }}</p>
+      <div class="acts">
+        {% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}
+        <a href="/projects/{{ p.id }}/" class="btn">로그 →</a>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+</main>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>

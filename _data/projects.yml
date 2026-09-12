@@ -1,0 +1,20 @@
+# 메인 메뉴의 순서가 곧 이 파일의 순서. 로그 페이지는 _projects/{id}.md
+- id: dolmagochi
+  name: 돌마고치
+  status: 운영 중
+  desc: 브라우저에서 키우는 다마고치. 3막 구조, 엔딩까지 55시간.
+  url: https://dolmagochi.dacotton.dev
+  thumb: /assets/img/dolmagochi-room.png
+  pixel: true
+- id: nyam
+  name: 냠
+  status: 만드는 중
+  desc: 반려동물 알레르기·성분 필터. 피할 원료를 등록하면 먹일 수 있는 습식 사료를 추려 준다.
+- id: lock-screen-tamagotchi
+  name: 잠금화면 다마고치
+  status: 설계 중
+  desc: 핸드폰 잠금화면·홈화면에 사는 가벼운 다마고치.
+- id: indie-concert-aggregator
+  name: 인디 공연 모아보기
+  status: 설계 중
+  desc: 예약 사이트에 흩어진 공연 중 락·인디·마이너 장르만 한곳에서.

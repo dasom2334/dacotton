@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{% assign p = site.data.projects | where: "id", page.slug | first %}
+<main class="page doc">
+  <nav class="crumb"><a href="/">◀ COTTON</a></nav>
+  <header class="dochd">
+    <h1 class="pname">{{ p.name | default: page.title }}</h1>
+    {% if p %}<p class="pst">{{ p.status }}</p><p class="desc">{{ p.desc }}</p>{% endif %}
+    <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}</div>
+  </header>
+  <div class="body">{{ content }}</div>
+  {% assign posts = site.posts | where: "project", page.slug %}
+  <section class="pxb list">
+    <h2 class="h2">결정 기록</h2>
+    {% if posts.size > 0 %}
+    <ul class="log">
+      {% for post in posts %}
+      <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="desc">아직 없다.</p>
+    {% endif %}
+  </section>
+</main>

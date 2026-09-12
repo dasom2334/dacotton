@@ -1,0 +1,165 @@
+@font-face {
+  font-family: Galmuri11;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Galmuri11 Regular"), url("../fonts/Galmuri11.woff2") format("woff2");
+}
+@font-face {
+  font-family: Galmuri11;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Galmuri11 Bold"), url("../fonts/Galmuri11-Bold.woff2") format("woff2");
+}
+
+:root {
+  --bg: #2b2433;
+  --panel: #332b3d;
+  --line: #4a4156;
+  --text: #f2ead8;
+  --text-hi: #fdf8ec;
+  --text-soft: #e0d6c4;
+  --text-mute: #c2b6a0;
+  --accent: #ffd866;
+  --accent-hi: #fff2b3;
+  --ok: #a8c491;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Galmuri11, "Apple SD Gothic Neo", "Noto Sans KR", monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: keep-all;
+  -webkit-font-smoothing: none;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hi); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+img { max-width: 100%; }
+h1, h2, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+/* 픽셀 테두리: 네 모서리를 4px씩 깎는다 */
+.pxb {
+  border: 4px solid var(--text);
+  clip-path: polygon(
+    0 4px, 4px 4px, 4px 0,
+    calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
+  );
+}
+
+.page {
+  min-height: 100vh;
+  padding: 72px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+/* 헤더 */
+.hd { text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.hd .row { display: flex; gap: 16px; align-items: flex-end; }
+.hd .tree { width: 46px; height: 124px; image-rendering: pixelated; }
+.hd .plant { width: 40px; height: 36px; image-rendering: pixelated; }
+.hd .name { font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: 0.04em; color: var(--accent); }
+.hd .role { font-size: 18px; }
+.hd .gh { font-size: 14px; }
+
+/* 메뉴 + 미리보기 */
+.box {
+  width: 760px;
+  max-width: 100%;
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 36px;
+  align-items: start;
+}
+.menu { display: flex; flex-direction: column; gap: 14px; }
+.menu a {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 90px;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 20px;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  color: var(--text);
+}
+.menu a .cur::before { content: ""; }
+.menu a.on { color: var(--accent); }
+.menu a.on .cur::before { content: "▶"; color: var(--accent); }
+.menu a:not(.on):hover, .menu a:not(.on):focus-visible { color: var(--text-hi); outline: none; }
+.menu a:not(.on):hover .cur::before, .menu a:not(.on):focus-visible .cur::before { content: "▷"; color: var(--text-hi); }
+.menu .st { font-size: 13px; color: var(--text-mute); text-align: right; }
+
+.preview { display: flex; flex-direction: column; gap: 12px; }
+.preview[hidden] { display: none; }
+.thumb { width: 200px; aspect-ratio: 4 / 3; overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb img.pixel { image-rendering: pixelated; }
+.pname { font-size: 18px; font-weight: 700; line-height: 1.3; }
+.pst { display: none; }
+.desc { font-size: 13px; color: var(--text-mute); }
+.acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-block; border: 3px solid var(--accent); padding: 2px 10px; font-size: 13px; }
+.btn:hover { background: var(--accent); color: var(--bg); }
+
+/* 로그 페이지 */
+.doc { align-items: stretch; max-width: 720px; margin: 0 auto; gap: 32px; }
+.crumb { font-size: 14px; }
+.crumb .sep { color: var(--line); margin: 0 6px; }
+.dochd { display: flex; flex-direction: column; gap: 8px; }
+.dochd .pname { font-size: 32px; }
+.dochd .pst { display: block; font-size: 13px; color: var(--text-mute); }
+.dochd .desc { font-size: 15px; color: var(--text-soft); }
+.body { font-size: 16px; color: var(--text-soft); }
+.body p { margin: 0 0 1em; }
+.body.pxb { padding: 24px 28px; background: var(--panel); }
+.list { padding: 20px 28px 24px; }
+.h2 { font-size: 13px; letter-spacing: 0.1em; color: var(--text-mute); margin-bottom: 12px; }
+.log li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 8px 0; border-top: 2px dotted var(--line); }
+.log li:first-child { border-top: none; }
+.log time { font-size: 13px; color: var(--text-mute); font-variant-numeric: tabular-nums; }
+.log a { color: var(--text); }
+.log a:hover { color: var(--accent); }
+
+/* 모바일: 미리보기 위(테두리 없음, sticky), 목록 아래(테두리) */
+@media (max-width: 640px) {
+  .page { padding: 36px 20px 48px; gap: 20px; align-items: stretch; }
+  .hd { gap: 6px; }
+  .hd .row { gap: 12px; }
+  .hd .tree { width: 23px; height: 62px; }
+  .hd .plant { width: 20px; height: 18px; }
+  .hd .name { font-size: 44px; }
+  .hd .role { font-size: 15px; }
+  .hd .gh { font-size: 13px; }
+  .box { width: auto; padding: 0; border: none; clip-path: none; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .preview { order: -1; position: sticky; top: 0; z-index: 1; background: var(--bg); padding: 12px 0 18px; gap: 10px; }
+  .thumb { width: 100%; }
+  .pname { font-size: 22px; }
+  .pst { display: inline; font-size: 12px; color: var(--text-mute); margin-left: 10px; }
+  .desc { font-size: 14px; color: var(--text-soft); }
+  .menu {
+    gap: 0; padding: 8px 16px 12px;
+    border: 4px solid var(--text);
+    clip-path: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
+  }
+  .menu a { grid-template-columns: 22px minmax(0, 1fr) auto; font-size: 18px; line-height: 1.35; padding: 12px 4px; margin: 0; border-top: 2px dotted var(--line); }
+  .menu li:first-child a { border-top: none; }
+  .menu .st { font-size: 12px; white-space: nowrap; }
+  .doc { gap: 24px; }
+  .dochd .pname { font-size: 26px; }
+  .log li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background 80ms steps(2); }
+}

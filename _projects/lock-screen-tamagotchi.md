@@ -1,0 +1,3 @@
+---
+slug: lock-screen-tamagotchi
+---
