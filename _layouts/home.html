@@ -8,7 +8,7 @@ layout: default
     <div class="center">
       <h1 class="name">{{ site.title }}</h1>
       <div>{{ site.tagline }}</div>
-      <div class="links"><a href="https://github.com/dasom2334">github.com/dasom2334</a><a href="/resume/">이력</a></div>
+      <div class="links"><a href="https://github.com/dasom2334">github.com/dasom2334</a><a href="/about/">소개</a></div>
     </div>
     <div class="orbit-nav">
       {% for n in site.data.nav %}<a href="{{ n.href }}" class="pl{% if forloop.first %} on{% endif %}" data-nav="{{ n.id }}"><span class="body" aria-hidden="true"></span><span class="nm">{{ n.name }}</span></a>{% endfor %}

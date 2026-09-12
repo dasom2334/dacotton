@@ -11,7 +11,7 @@
 - 결정 글 `_posts/YYYY-MM-DD-slug.md` — front matter `project: {id}`, 선택으로 `no`(번호), `summary`(한 줄). 본문 마지막 결정 문단은 `>` 인용으로
 - 로그 전체 `/log/` — 모든 결정 글을 월별로, 프로젝트 필터
 - 오답노트 `_mistakes/YYYY-MM-DD-slug.md` — front matter `date`, `project`, `level`(ERR·WARN·FIXED), `lost`, `tags`, `symptom`, `cause`, `fix`, `next`(각각 마크다운 문자열). 본문은 덧붙임
-- 이력 `resume/index.html`
+- 소개 `about/index.html`
 
 ## 로컬
 

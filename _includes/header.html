@@ -2,7 +2,7 @@
   <div class="tl">
     <a href="/" class="name">{{ site.title }}</a>
     <div class="role">{{ site.tagline }}</div>
-    <div class="links"><a href="https://github.com/dasom2334" class="gh">github.com/dasom2334</a><a href="/resume/" class="gh">이력</a></div>
+    <div class="links"><a href="https://github.com/dasom2334" class="gh">github.com/dasom2334</a><a href="/about/" class="gh">소개</a></div>
   </div>
   <nav class="nav">
     {% for n in site.data.nav %}<a href="{{ n.href }}"{% if page.nav == n.id %} class="on"{% endif %} data-nav="{{ n.id }}"><span class="cur"></span>{{ n.name }}</a>{% endfor %}
