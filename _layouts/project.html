@@ -2,25 +2,36 @@
 layout: default
 ---
 {% assign p = site.data.projects | where: "id", page.slug | first %}
-<main class="page doc">
-  <nav class="crumb"><a href="/">◀ COTTON</a></nav>
-  <header class="dochd">
-    <h1 class="pname">{{ p.name | default: page.title }}</h1>
-    {% if p %}<p class="pst">{{ p.status }}</p><p class="desc">{{ p.desc }}</p>{% endif %}
-    <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}</div>
-  </header>
-  <div class="body">{{ content }}</div>
+{% include header.html %}
+<main class="page doc wide">
+  <nav class="crumb"><a href="/#projects">프로젝트</a><span class="sep">/</span>{{ p.name }}</nav>
+
+  <div class="obs" data-slides>
+    {% if p.shots %}{% for s in p.shots %}<div class="slide"{% unless forloop.first %} hidden{% endunless %} data-slide="{{ forloop.index0 }}"><img src="{{ s.src | relative_url }}" alt="{{ p.name }} {{ s.name }}"{% if s.pixel %} class="pixel"{% endif %}></div>{% endfor %}{% else %}<div class="slide ph">화면 없음</div>{% endif %}
+    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+    <span class="tag">관측 · <span data-slide-tag>{% if p.shots %}01 {{ p.shots[0].name }}{% else %}—{% endif %}</span></span>
+    {% if p.shots.size > 1 %}<button type="button" class="arrow l" data-slide-prev aria-label="이전 화면">◀</button><button type="button" class="arrow r" data-slide-next aria-label="다음 화면">▶</button>{% endif %}
+    <div class="cap">
+      <div><div class="ttl"><h1 class="pname">{{ p.name }}</h1><span class="pst">{{ p.status }}</span></div><p class="lead">{{ p.desc }}</p></div>
+      <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}{% if p.github %}<a href="{{ p.github }}" class="btn">GitHub ↗</a>{% endif %}</div>
+    </div>
+  </div>
+  {% if p.shots.size > 1 %}<div class="shots">{% for s in p.shots %}<button type="button" data-slide-to="{{ forloop.index0 }}"{% if forloop.first %} class="on"{% endif %}>{% if forloop.first %}■{% else %}□{% endif %} {{ s.name }}</button>{% endfor %}</div>{% endif %}
+
+  {% if page.spec %}<div class="line">{% for s in page.spec %}<span>{{ s[0] }} <b>{{ s[1] }}</b></span>{% endfor %}</div>{% endif %}
+
+  <div class="grid2">
+    <div class="cell body">{{ content }}</div>
+    {% if page.points %}<div class="cell"><h2>어떻게 다른가</h2>{% for pt in page.points %}<p class="q">{{ pt }}</p>{% endfor %}</div>{% endif %}
+  </div>
+
   {% assign posts = site.posts | where: "project", page.slug %}
-  <section class="pxb list">
-    <h2 class="h2">결정 기록</h2>
+  <div class="rule"></div>
+  <div class="rec">
+    <h2>항해 일지</h2>
     {% if posts.size > 0 %}
-    <ul class="log">
-      {% for post in posts %}
-      <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p class="desc">아직 없다.</p>
-    {% endif %}
-  </section>
+    <ul>{% for post in posts limit: 4 %}<li><a href="{{ post.url | relative_url }}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><span>{{ post.title }}</span></a></li>{% endfor %}</ul>
+    {% else %}<p class="empty mut">아직 없음</p>{% endif %}
+  </div>
+  <div><a href="/projects/{{ page.slug }}/log/" class="btn">항해 일지 전체 →</a></div>
 </main>

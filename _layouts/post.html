@@ -2,11 +2,14 @@
 layout: default
 ---
 {% assign p = site.data.projects | where: "id", page.project | first %}
+{% include header.html %}
 <main class="page doc">
-  <nav class="crumb"><a href="/">◀ COTTON</a>{% if p %} <span class="sep">/</span> <a href="/projects/{{ p.id }}/">{{ p.name }}</a>{% endif %}</nav>
-  <header class="dochd">
-    <time class="pst" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
-    <h1 class="pname">{{ page.title }}</h1>
-  </header>
-  <article class="body pxb">{{ content }}</article>
+  <nav class="crumb"><a href="/#projects">프로젝트</a>{% if p %}<span class="sep">/</span><a href="/projects/{{ p.id }}/log/">{{ p.name }}</a>{% endif %}{% if page.no %}<span class="sep">/</span>{{ page.no }}{% endif %}</nav>
+  <article class="art pxb">
+    <div class="meta">{% if p %}<span class="pj">{{ p.name }}</span>{% endif %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>{% if page.no %}<span>{{ page.no }}</span>{% endif %}</div>
+    <h1>{{ page.title }}</h1>
+    <div class="body">{{ content }}</div>
+  </article>
+  {% if p %}{% assign posts = site.posts | where: "project", page.project %}
+  <div class="pn">{% if page.previous and page.previous.project == page.project %}<a href="{{ page.previous.url | relative_url }}">◀ {{ page.previous.title }}</a>{% else %}<span class="mut">이전 없음</span>{% endif %}{% if page.next and page.next.project == page.project %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} ▶</a>{% else %}<span class="mut">다음 없음</span>{% endif %}</div>{% endif %}
 </main>

@@ -1,0 +1,28 @@
+<div class="ov" id="hud" hidden>
+  <div class="hud pxb" role="dialog" aria-modal="true" aria-label="프로젝트">
+    <div class="top"><span class="t">PROJECT · <span id="hud-name"></span></span><button type="button" class="x" data-hud-close>닫기 ✕</button></div>
+    <div>
+      <div class="lbl">항로</div>
+      <div class="menu" id="hud-menu">
+        {% for p in site.data.projects %}
+        <a href="/projects/{{ p.id }}/" data-hud-pick="{{ p.id }}"><span class="cur"></span><span class="idx">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><span>{{ p.name }}</span><span class="st">{{ p.status }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      <div class="lbl">관측</div>
+      <div class="scope">
+        {% for p in site.data.projects %}
+        <div class="pv" data-hud-panel="{{ p.id }}" hidden>
+          {% if p.shots %}<div class="thumb"><img src="{{ p.shots[0].src | relative_url }}" alt=""{% if p.shots[0].pixel %} class="pixel"{% endif %}></div>{% endif %}
+          <div class="ptxt">
+            <div><span class="pname">{{ p.name }}</span><span class="pst mut">{{ p.status }}</span></div>
+            <p class="desc">{{ p.desc }}</p>
+            <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}<a href="/projects/{{ p.id }}/" class="btn">설명 →</a><a href="/projects/{{ p.id }}/log/" class="btn">로그 →</a></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{% assign p = site.data.projects | where: "id", page.slug | first %}
+{% include header.html %}
+<main class="page doc">
+  <nav class="crumb"><a href="/#projects">프로젝트</a><span class="sep">/</span><a href="/projects/{{ p.id }}/">{{ p.name }}</a><span class="sep">/</span>항해 일지</nav>
+  <div class="head pxb">
+    <div class="txt">
+      <div><span class="pname">{{ p.name }}</span><span class="pst">{{ p.status }}</span></div>
+      <p class="desc">{{ p.desc }}</p>
+      <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}{% if p.github %}<a href="{{ p.github }}" class="btn">GitHub ↗</a>{% endif %}</div>
+    </div>
+  </div>
+  {% assign posts = site.posts | where: "project", page.slug %}
+  <div class="box pxb">
+    <div class="lbl"><span>항해 일지 · 결정 {{ posts.size }}</span></div>
+    {% if posts.size > 0 %}
+    <div class="route">
+      {% for post in posts %}
+      <a href="{{ post.url | relative_url }}" class="ent{% if forloop.first %} on{% endif %}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if forloop.first and post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
+      {% endfor %}
+    </div>
+    {% else %}<p class="empty mut">아직 없음</p>{% endif %}
+  </div>
+</main>

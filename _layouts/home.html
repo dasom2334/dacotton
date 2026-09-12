@@ -1,43 +1,56 @@
 ---
 layout: default
 ---
-<main class="page">
-  <header class="hd">
-    <div class="row">
-      <img src="{{ '/assets/img/tree.png' | relative_url }}" alt="" class="tree" width="23" height="62">
-      <h1 class="name">COTTON</h1>
-      <img src="{{ '/assets/img/plant.png' | relative_url }}" alt="" class="plant" width="10" height="9">
+{% include header.html fixed=true %}
+<main class="page home">
+  <section class="hero" id="home">
+    <span class="ring" aria-hidden="true"></span>
+    <div class="center">
+      <h1 class="name">{{ site.title }}</h1>
+      <div>{{ site.tagline }}</div>
+      <div class="links"><a href="https://github.com/dasom2334">github.com/dasom2334</a><a href="/resume/">이력</a></div>
     </div>
-    <p class="role">백엔드 개발자</p>
-    <a href="https://github.com/dasom2334" class="gh">github.com/dasom2334</a>
-  </header>
+    <div class="orbit-nav">
+      {% for n in site.data.nav %}<a href="{{ n.href }}" class="pl{% if forloop.first %} on{% endif %}" data-nav="{{ n.id }}"><span class="body" aria-hidden="true"></span><span class="nm">{{ n.name }}</span></a>{% endfor %}
+    </div>
+    <div class="hint" aria-hidden="true">▼</div>
+  </section>
 
-  <section class="pxb box" id="projects">
-    <ul class="menu" role="tablist" aria-label="프로젝트">
+  <section class="sec" id="projects">
+    <h2>프로젝트</h2>
+    <div class="map">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {% assign prev = nil %}{% for p in site.data.projects %}{% if prev %}<line x1="{{ prev.x }}" y1="{{ prev.y }}" x2="{{ p.x }}" y2="{{ p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
+      </svg>
       {% for p in site.data.projects %}
-      <li>
-        <a href="/projects/{{ p.id }}/" role="tab" id="tab-{{ p.id }}" aria-controls="pv-{{ p.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-project="{{ p.id }}"{% if forloop.first %} class="on"{% endif %}>
-          <span class="cur" aria-hidden="true"></span>
-          <span>{{ p.name }}</span>
-          <span class="st">{{ p.status }}</span>
-        </a>
-      </li>
+      <a href="/projects/{{ p.id }}/" class="st-pt" style="left: {{ p.x }}%; top: {{ p.y }}%;" data-hud-open="{{ p.id }}"><span class="dot" aria-hidden="true"></span><span><span class="nm">{{ p.name }}</span><br><span class="s">{{ p.status }}</span></span></a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="sec" id="log">
+    <h2>로그 · 최근 결정</h2>
+    {% assign recent = site.posts | slice: 0, 4 %}
+    {% if recent.size > 0 %}
+    <ul class="log pxb">
+      {% for post in recent %}{% assign p = site.data.projects | where: "id", post.project | first %}
+      <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time><span class="pj">{{ p.name | default: post.project }}</span><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
+    {% else %}<p class="empty mut">아직 없음</p>{% endif %}
+  </section>
 
-    {% for p in site.data.projects %}
-    <div class="preview" id="pv-{{ p.id }}" role="tabpanel" aria-labelledby="tab-{{ p.id }}"{% unless forloop.first %} hidden{% endunless %}>
-      {% if p.thumb %}
-      <div class="thumb pxb"><img src="{{ p.thumb | relative_url }}" alt="{{ p.name }} 화면"{% if p.pixel %} class="pixel"{% endif %}></div>
-      {% endif %}
-      <div><span class="pname">{{ p.name }}</span><span class="pst">{{ p.status }}</span></div>
-      <p class="desc">{{ p.desc }}</p>
-      <div class="acts">
-        {% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}
-        <a href="/projects/{{ p.id }}/" class="btn">로그 →</a>
-      </div>
-    </div>
-    {% endfor %}
+  <section class="sec" id="mistakes">
+    <h2>오답노트 · 삽질과 해결</h2>
+    {% assign recentm = site.mistakes | sort: "date" | reverse | slice: 0, 3 %}
+    {% if recentm.size > 0 %}
+    <ul class="log pxb">
+      {% for m in recentm %}
+      <li><time datetime="{{ m.date | date: '%Y-%m-%d' }}">{{ m.date | date: '%Y-%m-%d' }}</time><span class="pj">{{ m.project }}</span><a href="{{ m.url | relative_url }}">{{ m.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}<p class="empty mut">아직 없음</p>{% endif %}
+    <div class="foot">dacotton.dev</div>
   </section>
 </main>
-<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+{% include hud.html %}

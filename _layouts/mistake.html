@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% include header.html %}
+<main class="page doc">
+  <nav class="crumb"><a href="/mistakes/">오답노트</a><span class="sep">/</span>{{ page.date | date: '%Y-%m-%d' }}</nav>
+  <article class="rep pxb">
+    <div class="hd">
+      <div>날짜<b>{{ page.date | date: '%Y-%m-%d' }}</b></div>
+      <div>프로젝트<b>{{ page.project }}</b></div>
+      <div class="{% if page.level == 'FIXED' %}ok{% else %}err{% endif %}">상태<b>{{ page.level | default: 'ERR' }}{% if page.level == 'FIXED' %}{% else %} → FIXED{% endif %}</b></div>
+      <div>잃은 시간<b>{{ page.lost | default: '—' }}</b></div>
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.tags.size > 0 %}<div class="tags">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</div>{% endif %}
+    {% if page.symptom %}<div class="sec"><span class="k">증상</span><div>{{ page.symptom | markdownify }}</div></div>{% endif %}
+    {% if page.cause %}<div class="sec"><span class="k">원인</span><div>{{ page.cause | markdownify }}</div></div>{% endif %}
+    {% if page.fix %}<div class="sec fix"><span class="k">해결</span><div>{{ page.fix | markdownify }}</div></div>{% endif %}
+    {% if page.next %}<div class="sec next"><span class="k">다음엔</span><div class="lesson">{{ page.next | markdownify }}</div></div>{% endif %}
+    {% if content != "" %}<div class="sec"><span class="k">덧붙임</span><div>{{ content }}</div></div>{% endif %}
+  </article>
+</main>

@@ -1,0 +1,24 @@
+---
+layout: default
+title: 로그
+nav: log
+permalink: /log/
+---
+{% include header.html %}
+<main class="page doc">
+  <div><h1 class="h1">로그</h1><p class="intro">프로젝트를 가리지 않고, 정한 것을 최신순으로.</p></div>
+  <div class="filters" data-filter-group><button type="button" class="on" data-filter="">전부</button>{% for p in site.data.projects %}<button type="button" data-filter="{{ p.id }}">{{ p.name }}</button>{% endfor %}</div>
+  {% if site.posts.size > 0 %}
+  <div class="box pxb">
+    {% assign months = site.posts | group_by_exp: "post", "post.date | date: '%Y · %m'" %}
+    {% for m in months %}
+    <div class="month">{{ m.name }}</div>
+    <div class="route">
+      {% for post in m.items %}{% assign p = site.data.projects | where: "id", post.project | first %}
+      <a href="{{ post.url | relative_url }}" class="ent" data-project="{{ post.project }}"><time>{{ post.date | date: '%m-%d' }}</time><span class="pj">{{ p.name | default: post.project }}</span><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}<p class="empty mut">아직 없음</p>{% endif %}
+</main>

@@ -1,4 +1,5 @@
-title: dacotton.dev
+title: dacotton
+tagline: 만든 것과 정한 것
 url: https://dacotton.dev
 lang: ko
 timezone: Asia/Seoul
@@ -8,15 +9,22 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+  mistakes:
+    output: true
+    permalink: /mistakes/:name/
 
 defaults:
   - scope: { path: "", type: projects }
     values: { layout: project }
   - scope: { path: "", type: posts }
     values: { layout: post }
+  - scope: { path: "", type: mistakes }
+    values: { layout: mistake }
 
 exclude:
+  - projects/indie-concert-aggregator
   - Gemfile
   - Gemfile.lock
   - vendor
   - README.md
+  - .claude

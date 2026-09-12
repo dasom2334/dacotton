@@ -1,0 +1,4 @@
+- { id: home, name: 홈, href: /#home }
+- { id: projects, name: 프로젝트, href: /#projects }
+- { id: log, name: 로그, href: /log/ }
+- { id: mistakes, name: 오답노트, href: /mistakes/ }

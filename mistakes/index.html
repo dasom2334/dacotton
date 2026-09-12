@@ -1,0 +1,27 @@
+---
+layout: default
+title: 오답노트
+nav: mistakes
+permalink: /mistakes/
+---
+{% include header.html %}
+<main class="page doc">
+  <div><h1 class="h1">오답노트</h1><p class="intro">막힌 것과 삽질을 하나씩. 증상, 원인, 해결, 그리고 다음엔.</p></div>
+  {% assign items = site.mistakes | sort: "date" | reverse %}
+  {% assign pjs = items | map: "project" | uniq %}
+  <div class="con pxb">
+    <div class="ttl"><span>ERROR LOG · <b data-count>{{ items.size }}</b> 건</span><div class="fl" data-filter-group><button type="button" class="on" data-filter="">전부</button>{% for pj in pjs %}<button type="button" data-filter="{{ pj }}">{{ pj }}</button>{% endfor %}</div></div>
+    {% if items.size > 0 %}
+    {% for m in items %}
+    <a href="{{ m.url | relative_url }}" class="row" data-project="{{ m.project }}" data-toggle><time>{{ m.date | date: '%Y-%m-%d' }}</time><span class="lv {% if m.level == 'ERR' %}err{% elsif m.level == 'WARN' %}warn{% else %}fixed{% endif %}">{{ m.level | default: 'FIXED' }}</span><span class="pj">{{ m.project }}</span><span><span class="t">{{ m.title }}</span><span class="sym">{{ m.symptom | strip_html | truncate: 90 }}</span></span><span class="go">▼</span></a>
+    <div class="detail" data-project="{{ m.project }}" hidden>
+      {% if m.cause %}<span class="k">원인</span><p>{{ m.cause | strip_html }}</p>{% endif %}
+      {% if m.fix %}<span class="k f">해결</span><p>{{ m.fix | strip_html }}</p>{% endif %}
+      {% if m.next %}<span class="k">다음엔</span><p>{{ m.next | strip_html }}</p>{% endif %}
+      <a href="{{ m.url | relative_url }}" class="more">전문 보기 →</a>
+    </div>
+    {% endfor %}
+    {% else %}<p class="empty mut" style="padding: 18px;">아직 없음</p>{% endif %}
+    <div class="cursorline"><span class="cursor"></span></div>
+  </div>
+</main>
