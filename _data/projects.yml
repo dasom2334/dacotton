@@ -8,7 +8,9 @@
   x: 22
   y: 40
   shots:
-    - { src: /assets/img/dolmagochi-room.png, name: 거실, pixel: true }
+    - { src: /assets/img/dolmagochi-morning-living.png, name: 낮 거실, pixel: true }
+    - { src: /assets/img/dolmagochi-sunset-bedroom.png, name: 노을 침실, pixel: true }
+    - { src: /assets/img/dolmagochi-night-kitchen.png, name: 저녁 주방, pixel: true }
 - id: lock-screen-tamagotchi
   name: 락마고치
   status: 설계 중
