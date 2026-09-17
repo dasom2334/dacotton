@@ -31,6 +31,7 @@
   y: 64
 - id: nyam
   name: 냠
+  url: https://nyam.dacotton.dev
   status: 만드는 중
   desc: 반려동물 알레르기·성분 필터. 피할 원료를 등록하면 먹일 수 있는 습식 사료를 추려 준다.
   x: 46
