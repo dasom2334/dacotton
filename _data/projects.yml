@@ -13,20 +13,20 @@
     - { src: /assets/img/dolmagochi-night-kitchen.png, name: 저녁 주방, pixel: true }
 - id: lock-screen-tamagotchi
   name: 락마고치
-  status: 설계 중
+  status: 중단
   desc: 핸드폰 잠금화면·홈화면에 사는 가벼운 다마고치.
   x: 40
   y: 20
 - id: substitue-doll
   name: 대타출동 인형
-  status: 만드는 중
+  status: 1차 완성 · 중단
   desc: 과거 대화로 말투를 배워, 대답하기 곤란할 때 대신 답을 지어 주는 AI 에이전트.
   github: https://github.com/dasom2334/substitue-doll
   x: 60
   y: 34
 - id: pdf-translator
   name: PDF 번역기
-  status: 공개
+  status: 1차 완성 · 중단
   desc: PDF 텍스트를 위치째 뽑아 번역하고 원래 자리에 다시 앉혀 새 PDF로 만드는 CLI.
   github: https://github.com/dasom2334/pdf-translator
   x: 76
