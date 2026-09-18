@@ -275,3 +275,11 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
   .rep .sec { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .cv .top { flex-direction: column; align-items: flex-start; } .cv .contact { align-items: flex-start; flex-direction: row; gap: 14px; } .cv .item { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
+
+/* Article summaries and paragraph headings. */
+.art > .tldr, .rep > .tldr { margin: 0; padding: 12px 16px; border-left: 4px solid var(--accent); background: rgba(255,216,102,0.06); }
+.rep > .tldr { margin: 8px 24px 20px; }
+.tldr p { margin: 0; }
+.tldr strong { color: var(--accent); margin-right: 6px; }
+.rep .sec > div > h2 { margin: 22px 0 10px; }
+.rep .sec > div > h2:first-child { margin-top: 0; }

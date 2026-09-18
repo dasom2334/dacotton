@@ -8,8 +8,19 @@ layout: default
   <article class="art pxb">
     <div class="meta">{% if p %}<span class="pj">{{ p.name }}</span>{% endif %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>{% if page.no %}<span>{{ page.no }}</span>{% endif %}</div>
     <h1>{{ page.title }}</h1>
+    {% if page.tldr %}<blockquote class="tldr"><p><strong>TL;DR</strong> {{ page.tldr | escape }}</p></blockquote>{% endif %}
     <div class="body">{{ content }}</div>
   </article>
-  {% if p %}{% assign posts = site.posts | where: "project", page.project %}
-  <div class="pn">{% if page.previous and page.previous.project == page.project %}<a href="{{ page.previous.url | relative_url }}">◀ {{ page.previous.title }}</a>{% else %}<span class="mut">이전 없음</span>{% endif %}{% if page.next and page.next.project == page.project %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} ▶</a>{% else %}<span class="mut">다음 없음</span>{% endif %}</div>{% endif %}
+  {% if p %}
+  {% assign series_posts = site.posts | where: "project", page.project | sort: "series_order" %}
+  {% assign previous_post = nil %}{% assign next_post = nil %}
+  {% for installment in series_posts %}
+    {% if installment.url == page.url %}
+      {% unless forloop.first %}{% assign previous_index = forloop.index0 | minus: 1 %}{% assign previous_post = series_posts[previous_index] %}{% endunless %}
+      {% unless forloop.last %}{% assign next_index = forloop.index0 | plus: 1 %}{% assign next_post = series_posts[next_index] %}{% endunless %}
+    {% endif %}
+  {% endfor %}
+  <div class="pn">{% if previous_post %}<a href="{{ previous_post.url | relative_url }}">◀ {{ previous_post.title }}</a>{% else %}<span class="mut">첫 번째 글</span>{% endif %}{% if next_post %}<a href="{{ next_post.url | relative_url }}">{{ next_post.title }} ▶</a>{% else %}<span class="mut">현재 마지막 글</span>{% endif %}</div>
+  <p><a href="/projects/{{ page.project }}/log/">{{ p.name }} 연재 전체 →</a></p>
+  {% endif %}
 </main>
