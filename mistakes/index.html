@@ -17,7 +17,7 @@ permalink: /mistakes/
     <div class="detail" data-project="{{ m.project }}" hidden>
       {% if m.cause %}<span class="k">원인</span><p>{{ m.cause | strip_html }}</p>{% endif %}
       {% if m.fix %}<span class="k f">해결</span><p>{{ m.fix | strip_html }}</p>{% endif %}
-      {% if m.next %}<span class="k">다음엔</span><p>{{ m.next | strip_html }}</p>{% endif %}
+      {% if m.lesson %}<span class="k">다음엔</span><p>{{ m.lesson | strip_html }}</p>{% endif %}
       <a href="{{ m.url | relative_url }}" class="more">전문 보기 →</a>
     </div>
     {% endfor %}

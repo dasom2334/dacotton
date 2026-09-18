@@ -12,13 +12,13 @@ layout: default
       <div class="acts">{% if p.url %}<a href="{{ p.url }}" class="btn">열기 ↗</a>{% endif %}{% if p.github %}<a href="{{ p.github }}" class="btn">GitHub ↗</a>{% endif %}</div>
     </div>
   </div>
-  {% assign posts = site.posts | where: "project", page.slug %}
+  {% assign posts = site.posts | where: "project", page.slug | sort: "series_order" %}
   <div class="box pxb">
-    <div class="lbl"><span>항해 일지 · 결정 {{ posts.size }}</span></div>
+    <div class="lbl"><span>항해 일지 · {{ posts.size }}편</span></div>
     {% if posts.size > 0 %}
     <div class="route">
       {% for post in posts %}
-      <a href="{{ post.url | relative_url }}" class="ent{% if forloop.first %} on{% endif %}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if forloop.first and post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
+      <a href="{{ post.url | relative_url }}" class="ent{% if forloop.first %} on{% endif %}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
       {% endfor %}
     </div>
     {% else %}<p class="empty mut">아직 없음</p>{% endif %}
