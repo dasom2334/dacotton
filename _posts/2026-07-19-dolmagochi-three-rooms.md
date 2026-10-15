@@ -4,8 +4,8 @@ date: "2026-07-19"
 project: "dolmagochi"
 summary: "7월 17~19일, 한 방의 밀도 문제에서 거실·침실·주방으로."
 review_status: "검수 대기"
-series_order: 8
-no: "08 / 24"
+series_order: 7
+no: "07 / 23"
 tldr: "소품이 늘어나는 문제를 세 방으로 나누고, 완성된 가구 배치에서 미보유 물건을 숨기는 방식으로 풀었다."
 ---
 

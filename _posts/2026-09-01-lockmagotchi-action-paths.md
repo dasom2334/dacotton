@@ -5,7 +5,7 @@ project: "lock-screen-tamagotchi"
 summary: "배경 터치는 막혔고 다른 조작 경로에는 진입·설정 비용이 붙어, 표시와 행동을 나누는 타협을 시험했다."
 tldr: "배경 터치는 막혔고 다른 조작 경로에는 진입·설정 비용이 붙어, 표시와 행동을 나누는 타협을 시험했다."
 series_order: 3
-no: "03 / 07"
+no: "03 / 06"
 review_status: "로컬 원고 · 검수 대기"
 ---
 

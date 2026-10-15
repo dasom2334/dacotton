@@ -4,8 +4,8 @@ date: "2026-07-23"
 project: "dolmagochi"
 summary: "화면을 전환하지 않는 PWA 사용에서 빠져 있던 업데이트 확인."
 review_status: "검수 대기"
-series_order: 18
-no: "18 / 24"
+series_order: 16
+no: "16 / 23"
 tldr: "계속 켜둔 PWA도 새 버전을 발견하도록 15분 주기 확인을 더하고, 실행 중에는 배너로 알리게 했다."
 ---
 

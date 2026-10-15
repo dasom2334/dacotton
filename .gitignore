@@ -4,3 +4,6 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+
+# 로컬 전용 근거 노트 (source_notes)
+_local/

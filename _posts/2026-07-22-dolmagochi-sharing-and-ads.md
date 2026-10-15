@@ -4,8 +4,8 @@ date: "2026-07-22"
 project: "dolmagochi"
 summary: "공유 준비로 시작한 도메인과 광고 검토, 그리고 광고 도입을 접은 이유."
 review_status: "검수 대기"
-series_order: 15
-no: "15 / 24"
+series_order: 13
+no: "13 / 23"
 source_confirmation: "사용자 직접 설명 2026-09-18"
 tldr: "공유를 위해 전용 주소를 마련했지만, 광고는 심사 준비와 추가 콘텐츠의 부담을 검토한 뒤 접었다."
 ---

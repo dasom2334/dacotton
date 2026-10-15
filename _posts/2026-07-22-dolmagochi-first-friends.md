@@ -3,10 +3,10 @@ title: "친구가 처음 본 돌은 꽤 도도했다"
 date: "2026-07-22"
 project: "dolmagochi"
 summary: "친구에게 공개하고 버그와 요구사항을 받기 시작했다."
-series_order: 16
+series_order: 14
 source_confirmation: "사용자 직접 설명 2026-09-18: 공개일은 7월 22일로 기억, 당일 18:40 대화 제공"
 review_status: "검수 대기"
-no: "16 / 24"
+no: "14 / 23"
 tldr: "7월 22일 친구에게 공개해 “돌이 도도하다”는 첫 반응을 듣고, 버그와 요구사항을 받기 시작했다."
 ---
 

@@ -5,7 +5,7 @@ project: "dolmagochi"
 summary: "직접 쓸 타이머를 만들려고 Claude 디자인의 HTML 시안에서 출발했다."
 review_status: "검수 대기"
 series_order: 1
-no: "01 / 24"
+no: "01 / 23"
 source_confirmation: "사용자 직접 설명 2026-09-18"
 tldr: "Flowtime 쇼츠를 계기로, 집중한 시간이 돌과의 관계로 쌓이는 개인용 타이머를 만들기 시작했다."
 ---
