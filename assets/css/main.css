@@ -164,8 +164,28 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
 .cell h2, .body h2 { font-size: 12px; letter-spacing: 0.16em; color: var(--accent); font-weight: 400; margin-top: 8px; }
 .cell p, .body p { color: var(--soft); font-size: 15px; line-height: 1.8; }
 .cell .q { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; } .cell .q::before { content: "▶"; color: var(--accent); font-size: 11px; padding-top: 6px; }
-.body ul { display: flex; flex-direction: column; gap: 6px; } .body li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; color: var(--soft); font-size: 15px; } .body li::before { content: "▶"; color: var(--accent); font-size: 11px; padding-top: 6px; }
+/* li 를 grid/flex 로 두면 텍스트와 <code>·<a> 가 각각 따로 칸이 되어 단어가 세로로 쌓인다 — 블록 + 절대 위치 표식으로 둔다 */
+.body ul, .body ol { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.body ol { counter-reset: body-ol; }
+.body li { position: relative; padding-left: 32px; color: var(--soft); font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.body ul > li::before { content: "▶"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 11px; line-height: 27px; }
+.body ol > li { counter-increment: body-ol; } .body ol > li::before { content: counter(body-ol) "."; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 15px; }
+.body li > ul, .body li > ol { margin-top: 6px; }
+/* 표: 좁은 화면에서 열이 짓눌리지 않게 표 자체를 가로 스크롤 블록으로 */
+.body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; font-size: 14px; color: var(--soft); }
+.body th, .body td { padding: 6px 12px; text-align: left; vertical-align: top; border-bottom: 2px dotted var(--line); min-width: 7em; }
+.body th { color: var(--text); font-weight: 400; white-space: nowrap; }
+/* 오른쪽 칸(points)이 없는 프로젝트는 본문이 두 칸 전체를 쓴다 */
+.grid2 > .cell:only-child { grid-column: 1 / -1; }
 .rule { border-top: 2px dotted var(--line); }
+/* 대표 글 */
+.feat { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: start; }
+.feat h2 { font-size: 12px; letter-spacing: 0.16em; color: var(--accent); font-weight: 400; padding-top: 12px; }
+.feat ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.feat a { display: block; padding: 12px 16px; border-left: 4px solid var(--line); background: rgba(255,216,102,0.04); color: var(--text); }
+.feat a:hover { border-left-color: var(--accent); background: rgba(255,216,102,0.08); } .feat a:hover .t { color: var(--accent); }
+.feat .t { font-size: 15px; line-height: 1.5; } .feat .no { color: var(--muted); font-size: 12px; margin-right: 10px; }
+.feat p { margin: 6px 0 0; color: var(--soft); font-size: 14px; line-height: 1.7; }
 .rec { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: baseline; }
 .rec h2 { font-size: 12px; letter-spacing: 0.16em; color: var(--muted); font-weight: 400; }
 .rec ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; }
@@ -266,7 +286,7 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
   .hud { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 16px 18px 20px; margin: 8px 0 24px; }
   .menu a { grid-template-columns: 22px minmax(0, 1fr) auto; font-size: 17px; } .menu a .idx { display: none; } .menu .st { white-space: nowrap; }
   .obs { aspect-ratio: 4 / 3; } .obs .cap { left: 16px; right: 16px; bottom: 14px; flex-direction: column; align-items: flex-start; gap: 10px; } .obs .pname { font-size: 30px; } .obs .lead { font-size: 14px; } .obs .arrow { display: none; }
-  .grid2 { grid-template-columns: minmax(0, 1fr); } .rec { grid-template-columns: minmax(0, 1fr); } .rec ul { grid-template-columns: minmax(0, 1fr); }
+  .grid2 { grid-template-columns: minmax(0, 1fr); } .rec { grid-template-columns: minmax(0, 1fr); } .feat { grid-template-columns: minmax(0, 1fr); gap: 10px; } .feat h2 { padding-top: 0; } .rec ul { grid-template-columns: minmax(0, 1fr); }
   .head { flex-direction: column; } .box { padding: 16px 18px 20px; }
   .ent, .ent[data-project] { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .row { grid-template-columns: minmax(0, 1fr) 24px; gap: 4px 10px; } .row time, .row .lv, .row .pj { font-size: 11px; }

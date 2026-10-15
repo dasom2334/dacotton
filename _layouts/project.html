@@ -25,6 +25,14 @@ layout: default
     {% if page.points %}<div class="cell"><h2>어떻게 다른가</h2>{% for pt in page.points %}<p class="q">{{ pt }}</p>{% endfor %}</div>{% endif %}
   </div>
 
+  {% if page.featured %}
+  <div class="rule"></div>
+  <section class="feat">
+    <h2>대표 글</h2>
+    <ol>{% for u in page.featured %}{% assign fp = site.posts | where: "url", u | first %}{% if fp %}<li><a href="{{ fp.url | relative_url }}"><span class="t">{% if fp.no %}<span class="no">{{ fp.no }}</span>{% endif %}{{ fp.title }}</span>{% if fp.tldr %}<p>{{ fp.tldr | escape }}</p>{% endif %}</a></li>{% endif %}{% endfor %}</ol>
+  </section>
+  {% endif %}
+
   {% assign posts = site.posts | where: "project", page.slug %}
   <div class="rule"></div>
   <div class="rec">

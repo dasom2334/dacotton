@@ -2,6 +2,10 @@
 slug: nyam
 title: 냠
 nav: projects
+featured:
+  - "/log/2026/09/11/nyam-testing-the-tests/"
+  - "/log/2026/09/11/nyam-publish-observations/"
+  - "/log/2026/09/22/nyam-catalog-completeness/"
 ---
 ## 친구의 고양이를 돌보는 일에서 시작했다
 
