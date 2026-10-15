@@ -6,7 +6,7 @@ layout: default
 <main class="page doc wide">
   <nav class="crumb"><a href="/#projects">프로젝트</a><span class="sep">/</span>{{ p.name }}</nav>
 
-  <div class="obs" data-slides>
+  <div class="obs{% if p.shot_layout == 'screen' %} obs-screen{% endif %}" data-slides>
     {% if p.shots %}{% for s in p.shots %}<div class="slide"{% unless forloop.first %} hidden{% endunless %} data-slide="{{ forloop.index0 }}"><img src="{{ s.src | relative_url }}" alt="{{ p.name }} {{ s.name }}"{% if s.pixel %} class="pixel"{% endif %}></div>{% endfor %}{% else %}<div class="slide ph">화면 없음</div>{% endif %}
     <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
     <span class="tag">관측 · <span data-slide-tag>{% if p.shots %}01 {{ p.shots[0].name }}{% else %}—{% endif %}</span></span>
