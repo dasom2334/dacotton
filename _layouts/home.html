@@ -17,15 +17,16 @@ layout: default
   </section>
 
   <section class="sec" id="projects">
+    {% assign shown = site.data.projects | where_exp: "p", "p.hidden != true" %}
     <h2>프로젝트</h2>
     <div class="map">
       <svg class="d" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {% assign prev = nil %}{% for p in site.data.projects %}{% if prev %}<line x1="{{ prev.x }}" y1="{{ prev.y }}" x2="{{ p.x }}" y2="{{ p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
+        {% assign prev = nil %}{% for p in shown %}{% if prev %}<line x1="{{ prev.x }}" y1="{{ prev.y }}" x2="{{ p.x }}" y2="{{ p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
       </svg>
       <svg class="m" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {% assign prev = nil %}{% for p in site.data.projects %}{% if prev %}<line x1="{{ prev.mx | default: prev.x }}" y1="{{ prev.my | default: prev.y }}" x2="{{ p.mx | default: p.x }}" y2="{{ p.my | default: p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
+        {% assign prev = nil %}{% for p in shown %}{% if prev %}<line x1="{{ prev.mx | default: prev.x }}" y1="{{ prev.my | default: prev.y }}" x2="{{ p.mx | default: p.x }}" y2="{{ p.my | default: p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
       </svg>
-      {% for p in site.data.projects %}
+      {% for p in shown %}
       <a href="/projects/{{ p.id }}/" class="st-pt" style="--x: {{ p.x }}%; --y: {{ p.y }}%; --mx: {{ p.mx | default: p.x }}%; --my: {{ p.my | default: p.y }}%;" data-hud-open="{{ p.id }}"><span class="dot" aria-hidden="true"></span><span><span class="nm">{{ p.name }}</span><br><span class="s">{{ p.status }}</span></span></a>
       {% endfor %}
     </div>

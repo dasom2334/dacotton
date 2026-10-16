@@ -1,5 +1,6 @@
 ---
 slug: multi-agent-debate
+published: false  # 사이트에서 숨김 (2026-10-16)
 title: 멀티 에이전트 디베이트
 nav: projects
 ---
