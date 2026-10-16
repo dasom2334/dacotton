@@ -1,14 +1,14 @@
-# 순서가 곧 HUD 항로 순서. x·y 는 별자리 위치(%), mx·my 는 모바일(≤640px) 위치. 로그는 _posts 의 project: {id}. github 는 공개 레포만
+# 순서가 곧 HUD 항로 순서. hidden: true 인 프로젝트는 홈·HUD·로그 필터에서 빠진다(_projects 쪽은 published: false). x·y 는 별자리 위치(%), mx·my 는 모바일(≤640px) 위치. 로그는 _posts 의 project: {id}. github 는 공개 레포만
 - id: dolmagochi
   name: 돌마고치
   status: 운영 중
   desc: 집중한 시간으로 돌과 관계를 쌓는 Flowtime 타이머. 육성 이후까지 이어지는 3막.
   url: https://dolmagochi.dacotton.dev
   github: https://github.com/dasom2334/dolmagochi
-  x: 22
-  y: 40
-  mx: 20
-  my: 48
+  x: 20
+  y: 50
+  mx: 18
+  my: 50
   shots:
     - { src: /assets/img/dolmagochi-morning-living.png, name: 낮 거실, pixel: true }
     - { src: /assets/img/dolmagochi-sunset-bedroom.png, name: 노을 침실, pixel: true }
@@ -21,28 +21,28 @@
     - { src: /assets/img/lockmagotchi-pilea-original.webp, name: 제작한 대표 에셋 · 햇살 필레아 }
   status: 중단
   desc: 핸드폰 잠금화면·홈화면에 사는 가벼운 다마고치.
-  x: 40
-  y: 20
-  mx: 18
-  my: 22
+  x: 38
+  y: 22
+  mx: 26
+  my: 16
 - id: substitue-doll
   name: 대타출동 인형
   status: 1차 완성 · 중단
   desc: 과거 대화로 말투를 배워, 대답하기 곤란할 때 대신 답을 지어 주는 AI 에이전트.
   github: https://github.com/dasom2334/substitue-doll
-  x: 60
-  y: 34
-  mx: 66
-  my: 34
+  x: 64
+  y: 26
+  mx: 68
+  my: 30
 - id: pdf-translator
   name: PDF 번역기
   status: 1차 완성 · 중단
   desc: PDF 텍스트를 위치째 뽑아 번역하고 원래 자리에 다시 앉혀 새 PDF로 만드는 CLI.
   github: https://github.com/dasom2334/pdf-translator
-  x: 76
-  y: 64
-  mx: 70
-  my: 62
+  x: 80
+  y: 58
+  mx: 72
+  my: 58
 - id: nyam
   name: 냠
   shot_layout: screen
@@ -54,12 +54,13 @@
   url: https://nyam.dacotton.dev
   status: 운영중
   desc: 사료·간식의 제품 정보를 모아 보호자가 정한 조건과 대조하고, 급여 기간과 관찰 기록을 함께 남기는 도구.
-  x: 46
-  y: 74
-  mx: 36
+  x: 50
+  y: 78
+  mx: 40
   my: 84
 
 - id: multi-agent-debate
+  hidden: true
   name: 멀티 에이전트 디베이트
   status: 로컬 도구
   desc: 여러 AI의 독립적인 답과 이견을 비교하고, 필요한 쟁점만 토론하는 CLI 패널.
