@@ -19,11 +19,14 @@ layout: default
   <section class="sec" id="projects">
     <h2>프로젝트</h2>
     <div class="map">
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="d" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         {% assign prev = nil %}{% for p in site.data.projects %}{% if prev %}<line x1="{{ prev.x }}" y1="{{ prev.y }}" x2="{{ p.x }}" y2="{{ p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
       </svg>
+      <svg class="m" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {% assign prev = nil %}{% for p in site.data.projects %}{% if prev %}<line x1="{{ prev.mx | default: prev.x }}" y1="{{ prev.my | default: prev.y }}" x2="{{ p.mx | default: p.x }}" y2="{{ p.my | default: p.y }}" />{% endif %}{% assign prev = p %}{% endfor %}
+      </svg>
       {% for p in site.data.projects %}
-      <a href="/projects/{{ p.id }}/" class="st-pt" style="left: {{ p.x }}%; top: {{ p.y }}%;" data-hud-open="{{ p.id }}"><span class="dot" aria-hidden="true"></span><span><span class="nm">{{ p.name }}</span><br><span class="s">{{ p.status }}</span></span></a>
+      <a href="/projects/{{ p.id }}/" class="st-pt" style="--x: {{ p.x }}%; --y: {{ p.y }}%; --mx: {{ p.mx | default: p.x }}%; --my: {{ p.my | default: p.y }}%;" data-hud-open="{{ p.id }}"><span class="dot" aria-hidden="true"></span><span><span class="nm">{{ p.name }}</span><br><span class="s">{{ p.status }}</span></span></a>
       {% endfor %}
     </div>
   </section>
@@ -45,8 +48,8 @@ layout: default
     {% assign recentm = site.mistakes | sort: "date" | reverse | slice: 0, 3 %}
     {% if recentm.size > 0 %}
     <ul class="log pxb">
-      {% for m in recentm %}
-      <li><time datetime="{{ m.date | date: '%Y-%m-%d' }}">{{ m.date | date: '%Y-%m-%d' }}</time><span class="pj">{{ m.project }}</span><a href="{{ m.url | relative_url }}">{{ m.title }}</a></li>
+      {% for m in recentm %}{% assign mp = site.data.projects | where: "id", m.project | first %}
+      <li><time datetime="{{ m.date | date: '%Y-%m-%d' }}">{{ m.date | date: '%Y-%m-%d' }}</time><span class="pj">{{ mp.name | default: m.project }}</span><a href="{{ m.url | relative_url }}">{{ m.title }}</a></li>
       {% endfor %}
     </ul>
     {% else %}<p class="empty mut">아직 없음</p>{% endif %}

@@ -95,7 +95,8 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
 .map { position: relative; height: 420px; }
 .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map line { stroke: var(--line); stroke-width: 3; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
-.st-pt { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 12px; color: var(--text); }
+.map svg.m { display: none; }
+.st-pt { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); display: flex; align-items: center; gap: 12px; color: var(--text); }
 .st-pt .dot { position: relative; width: 12px; height: 12px; flex: none; }
 .st-pt .dot::before { content: ""; position: absolute; left: 4px; top: 0; width: 4px; height: 12px; background: var(--text); }
 .st-pt .dot::after { content: ""; position: absolute; left: 0; top: 4px; width: 12px; height: 4px; background: var(--text); }
@@ -277,10 +278,10 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
   .hero { height: auto; padding: 40px 0 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
   .ring, .hint { display: none; }
   .center { position: static; transform: none; } .center .name { font-size: 44px; }
-  .orbit-nav { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .orbit-nav { display: flex; gap: 8px 14px; flex-wrap: wrap; justify-content: center; padding: 0 12px; } .orbit-nav .pl .nm { font-size: 16px; }
   .pl { position: static; transform: none; flex-direction: row; gap: 12px; } .pl.on .body::after { display: none; }
   .sec { padding: 32px 20px; }
-  .map { height: 360px; } .st-pt { transform: translate(-50%, -50%) scale(0.85); }
+  /* 모바일은 별자리 좌표를 따로 쓴다(_data/projects.yml 의 mx·my) — 데스크톱 좌표로는 라벨이 겹치고 오른쪽 끝에 닿았다 */ .map { height: 400px; } .map svg.d { display: none; } .map svg.m { display: block; } .st-pt { left: var(--mx); top: var(--my); gap: 8px; } .st-pt .nm { font-size: 15px; } .st-pt .nm::before { width: 0; } .st-pt .s { font-size: 10px; }
   .log li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .ov { align-items: flex-start; overflow-y: auto; padding: 16px; }
   .hud { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 16px 18px 20px; margin: 8px 0 24px; }
@@ -289,7 +290,7 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
   .grid2 { grid-template-columns: minmax(0, 1fr); } .rec { grid-template-columns: minmax(0, 1fr); } .feat { grid-template-columns: minmax(0, 1fr); gap: 10px; } .feat h2 { padding-top: 0; } .rec ul { grid-template-columns: minmax(0, 1fr); }
   .head { flex-direction: column; } .box { padding: 16px 18px 20px; }
   .ent, .ent[data-project] { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .row { grid-template-columns: minmax(0, 1fr) 24px; gap: 4px 10px; } .row time, .row .lv, .row .pj { font-size: 11px; }
+  /* 날짜·레벨·프로젝트를 첫 줄에, 제목·증상을 둘째 줄 전체에 — 2칸 자동 배치로는 제목이 24px 칸에 들어가 세로로 쌓였다 */ .row { grid-template-columns: auto auto minmax(0, 1fr) 24px; gap: 4px 10px; } .row > span:nth-of-type(3) { grid-column: 1 / 4; grid-row: 2; } .row .go { grid-column: 4; grid-row: 1 / 3; align-self: center; } .row time, .row .lv, .row .pj { font-size: 11px; }
   .detail { grid-template-columns: minmax(0, 1fr); } .detail .more { grid-column: 1; }
   .rep .hd { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rep .hd > div:nth-child(2) { border-right: none; } .rep .hd > div:nth-child(-n+2) { border-bottom: 2px dotted var(--line); }
   .rep .sec { grid-template-columns: minmax(0, 1fr); gap: 6px; }

@@ -1,4 +1,4 @@
-# 순서가 곧 HUD 항로 순서. x·y 는 별자리 위치(%). 로그는 _posts 의 project: {id}. github 는 공개 레포만
+# 순서가 곧 HUD 항로 순서. x·y 는 별자리 위치(%), mx·my 는 모바일(≤640px) 위치. 로그는 _posts 의 project: {id}. github 는 공개 레포만
 - id: dolmagochi
   name: 돌마고치
   status: 운영 중
@@ -7,6 +7,8 @@
   github: https://github.com/dasom2334/dolmagochi
   x: 22
   y: 40
+  mx: 20
+  my: 48
   shots:
     - { src: /assets/img/dolmagochi-morning-living.png, name: 낮 거실, pixel: true }
     - { src: /assets/img/dolmagochi-sunset-bedroom.png, name: 노을 침실, pixel: true }
@@ -21,6 +23,8 @@
   desc: 핸드폰 잠금화면·홈화면에 사는 가벼운 다마고치.
   x: 40
   y: 20
+  mx: 18
+  my: 22
 - id: substitue-doll
   name: 대타출동 인형
   status: 1차 완성 · 중단
@@ -28,6 +32,8 @@
   github: https://github.com/dasom2334/substitue-doll
   x: 60
   y: 34
+  mx: 66
+  my: 34
 - id: pdf-translator
   name: PDF 번역기
   status: 1차 완성 · 중단
@@ -35,6 +41,8 @@
   github: https://github.com/dasom2334/pdf-translator
   x: 76
   y: 64
+  mx: 70
+  my: 62
 - id: nyam
   name: 냠
   shot_layout: screen
@@ -48,6 +56,8 @@
   desc: 사료·간식의 제품 정보를 모아 보호자가 정한 조건과 대조하고, 급여 기간과 관찰 기록을 함께 남기는 도구.
   x: 46
   y: 74
+  mx: 36
+  my: 84
 
 - id: multi-agent-debate
   name: 멀티 에이전트 디베이트
@@ -55,3 +65,5 @@
   desc: 여러 AI의 독립적인 답과 이견을 비교하고, 필요한 쟁점만 토론하는 CLI 패널.
   x: 76
   y: 18
+  mx: 66
+  my: 7

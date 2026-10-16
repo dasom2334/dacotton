@@ -10,10 +10,10 @@ permalink: /mistakes/
   {% assign items = site.mistakes | sort: "date" | reverse %}
   {% assign pjs = items | map: "project" | uniq %}
   <div class="con pxb">
-    <div class="ttl"><span>ERROR LOG · <b data-count>{{ items.size }}</b> 건</span><div class="fl" data-filter-group><button type="button" class="on" data-filter="">전부</button>{% for pj in pjs %}<button type="button" data-filter="{{ pj }}">{{ pj }}</button>{% endfor %}</div></div>
+    <div class="ttl"><span>ERROR LOG · <b data-count>{{ items.size }}</b> 건</span><div class="fl" data-filter-group><button type="button" class="on" data-filter="">전부</button>{% for pj in pjs %}{% assign pp = site.data.projects | where: "id", pj | first %}<button type="button" data-filter="{{ pj }}">{{ pp.name | default: pj }}</button>{% endfor %}</div></div>
     {% if items.size > 0 %}
-    {% for m in items %}
-    <a href="{{ m.url | relative_url }}" class="row" data-project="{{ m.project }}" data-toggle><time>{{ m.date | date: '%Y-%m-%d' }}</time><span class="lv {% if m.level == 'ERR' %}err{% elsif m.level == 'WARN' %}warn{% else %}fixed{% endif %}">{{ m.level | default: 'FIXED' }}</span><span class="pj">{{ m.project }}</span><span><span class="t">{{ m.title }}</span><span class="sym">{{ m.symptom | strip_html | truncate: 90 }}</span></span><span class="go">▼</span></a>
+    {% for m in items %}{% assign mp = site.data.projects | where: "id", m.project | first %}
+    <a href="{{ m.url | relative_url }}" class="row" data-project="{{ m.project }}" data-toggle><time>{{ m.date | date: '%Y-%m-%d' }}</time><span class="lv {% if m.level == 'ERR' %}err{% elsif m.level == 'WARN' %}warn{% else %}fixed{% endif %}">{{ m.level | default: 'FIXED' }}</span><span class="pj">{{ mp.name | default: m.project }}</span><span><span class="t">{{ m.title }}</span><span class="sym">{{ m.symptom | strip_html | truncate: 90 }}</span></span><span class="go">▼</span></a>
     <div class="detail" data-project="{{ m.project }}" hidden>
       {% if m.cause %}<span class="k">원인</span><p>{{ m.cause | strip_html }}</p>{% endif %}
       {% if m.fix %}<span class="k f">해결</span><p>{{ m.fix | strip_html }}</p>{% endif %}

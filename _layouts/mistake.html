@@ -7,7 +7,7 @@ layout: default
   <article class="rep pxb">
     <div class="hd">
       <div>날짜<b>{{ page.date | date: '%Y-%m-%d' }}</b></div>
-      <div>프로젝트<b>{{ page.project }}</b></div>
+      {% assign mp = site.data.projects | where: "id", page.project | first %}<div>프로젝트<b>{% if mp %}<a href="/projects/{{ mp.id }}/">{{ mp.name }}</a>{% else %}{{ page.project }}{% endif %}</b></div>
       <div class="{% if page.level == 'FIXED' %}ok{% else %}err{% endif %}">상태<b>{{ page.level | default: 'ERR' }}</b></div>
       <div>잃은 시간<b>{{ page.lost | default: '—' }}</b></div>
     </div>
