@@ -179,6 +179,9 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
 /* 오른쪽 칸(points)이 없는 프로젝트는 본문이 두 칸 전체를 쓴다 */
 .grid2 > .cell:only-child { grid-column: 1 / -1; }
 .rule { border-top: 2px dotted var(--line); }
+/* 404 */
+.nf { display: flex; flex-direction: column; gap: 14px; padding: 28px 32px 32px; background: var(--panel); }
+.nf .lbl { color: var(--pink); } .nf .h1 { margin: 0; } .nf .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 /* 대표 글 */
 .feat { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: start; }
 .feat h2 { font-size: 12px; letter-spacing: 0.16em; color: var(--accent); font-weight: 400; padding-top: 12px; }

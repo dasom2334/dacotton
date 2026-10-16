@@ -5,10 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#29264a">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
-  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  {%- assign meta_pid = page.project | default: page.slug -%}
+  {%- assign meta_p = nil -%}{%- if meta_pid -%}{%- assign meta_p = site.data.projects | where: "id", meta_pid | first -%}{%- endif -%}
+  {%- assign meta_desc = page.tldr | default: page.summary | default: page.description -%}
+  {%- if meta_desc == nil and page.collection == "projects" and meta_p -%}{%- assign meta_desc = meta_p.desc -%}{%- endif -%}
+  {%- assign meta_desc = meta_desc | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
+  {%- assign meta_title = page.title | default: meta_p.name -%}
+  {%- if meta_title -%}{%- assign meta_full = meta_title | append: " — " | append: site.title -%}{%- else -%}{%- assign meta_full = site.title -%}{%- endif -%}
+  {%- assign meta_img = "/assets/img/og-default.png" -%}
+  {%- if meta_p and meta_p.og_image -%}{%- assign meta_img = meta_p.og_image -%}{%- elsif meta_p and meta_p.shots -%}{%- assign meta_shot = meta_p.shots[0].src -%}{%- unless meta_shot contains ".webp" -%}{%- assign meta_img = meta_shot -%}{%- endunless -%}{%- endif %}
+  <title>{{ meta_full }}</title>
+  <meta name="description" content="{{ meta_desc | escape }}">
+  <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:type" content="{% if page.collection == 'posts' or page.collection == 'mistakes' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ meta_full | escape }}">
+  <meta property="og:description" content="{{ meta_desc | escape }}">
+  <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+  <meta property="og:image" content="{{ meta_img | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ meta_full | escape }}">
+  <meta name="twitter:description" content="{{ meta_desc | escape }}">
+  <meta name="twitter:image" content="{{ meta_img | absolute_url }}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="{{ '/assets/fonts/Galmuri11.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=slides-20260921">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=20261016">
 </head>
 <body class="{{ page.body_class }}">
 {% include sky.html %}
