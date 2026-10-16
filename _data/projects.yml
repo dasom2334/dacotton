@@ -15,8 +15,8 @@
   name: 락마고치
   shot_layout: screen
   shots:
-    - { src: /assets/img/lockmagotchi-pilea-play-reconstruction.png, name: HD 에셋 기반 플레이 재구성 }
-    - { src: /assets/img/lockmagotchi-pilea-original.png, name: 제작한 대표 에셋 · 햇살 필레아 }
+    - { src: /assets/img/lockmagotchi-pilea-play-reconstruction.webp, name: HD 에셋 기반 플레이 재구성 }
+    - { src: /assets/img/lockmagotchi-pilea-original.webp, name: 제작한 대표 에셋 · 햇살 필레아 }
   status: 중단
   desc: 핸드폰 잠금화면·홈화면에 사는 가벼운 다마고치.
   x: 40
