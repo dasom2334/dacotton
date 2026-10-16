@@ -320,3 +320,29 @@ pre { margin: 8px 0 0; padding: 10px 14px; background: rgba(0,0,0,0.3); font-fam
   .obs-screen .cap { padding: 20px; }
   .obs-screen .slide { padding-left: 12px; padding-right: 12px; }
 }
+
+/* 연재 흐름 · 기승전결 */
+.story { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: start; }
+.story > h2 { font-size: 12px; letter-spacing: 0.16em; color: var(--muted); font-weight: 400; padding-top: 4px; }
+.stages { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.stage .sh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.stage .sk { display: inline-block; min-width: 28px; padding: 2px 6px; text-align: center; color: var(--bg); background: var(--accent); font-size: 14px; }
+.stage .sn { font-size: 16px; color: var(--text); } .stage .sc { font-size: 12px; color: var(--muted); }
+.stage .sd { margin: 6px 0 8px; color: var(--soft); font-size: 14px; line-height: 1.7; }
+.stage ol { list-style: none; margin: 0; padding: 0 0 0 12px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.stage li a { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 5px 8px; color: var(--text); font-size: 14px; line-height: 1.5; }
+.stage li a:hover { color: var(--accent); background: rgba(255,216,102,0.06); }
+.stage .no { color: var(--muted); font-size: 12px; } .stage time { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.ctx { margin: 18px 0; padding: 10px 14px; border-left: 4px solid var(--line); background: rgba(255,216,102,0.04); color: var(--soft); font-size: 14px; line-height: 1.7; }
+.ctx .lbl { display: block; font-size: 11px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 2px; }
+.ctx a { color: var(--text); } .ctx a:hover { color: var(--accent); }
+.next-ctx { margin-top: 28px; }
+@media (max-width: 640px) {
+  .story { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .stage ol { padding-left: 8px; }
+  .stage li a { grid-template-columns: 26px minmax(0, 1fr); }
+  .stage li a time { display: none; }
+}
+.stage-h { margin: 22px 0 8px; font-size: 15px; color: var(--text); } .stage-h:first-child { margin-top: 0; }
+.stage-h .sk { display: inline-block; min-width: 26px; padding: 1px 6px; text-align: center; color: var(--bg); background: var(--accent); font-size: 13px; margin-right: 6px; }
+.stage-h p { margin: 4px 0 0; color: var(--soft); font-size: 13px; line-height: 1.6; }

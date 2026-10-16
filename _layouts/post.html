@@ -4,13 +4,6 @@ layout: default
 {% assign p = site.data.projects | where: "id", page.project | first %}
 {% include header.html %}
 <main class="page doc">
-  <nav class="crumb"><a href="/#projects">프로젝트</a>{% if p %}<span class="sep">/</span><a href="/projects/{{ p.id }}/log/">{{ p.name }}</a>{% endif %}{% if page.no %}<span class="sep">/</span>{{ page.no }}{% endif %}</nav>
-  <article class="art pxb">
-    <div class="meta">{% if p %}<span class="pj">{{ p.name }}</span>{% endif %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>{% if page.no %}<span>{{ page.no }}</span>{% endif %}</div>
-    <h1>{{ page.title }}</h1>
-    {% if page.tldr %}<blockquote class="tldr"><p><strong>TL;DR</strong> {{ page.tldr | escape }}</p></blockquote>{% endif %}
-    <div class="body">{{ content }}</div>
-  </article>
   {% if p %}
   {% assign series_posts = site.posts | where: "project", page.project | sort: "series_order" %}
   {% assign previous_post = nil %}{% assign next_post = nil %}
@@ -20,7 +13,17 @@ layout: default
       {% unless forloop.last %}{% assign next_index = forloop.index0 | plus: 1 %}{% assign next_post = series_posts[next_index] %}{% endunless %}
     {% endif %}
   {% endfor %}
-  <div class="pn">{% if previous_post %}<a href="{{ previous_post.url | relative_url }}">◀ {{ previous_post.title }}</a>{% else %}<span class="mut">첫 번째 글</span>{% endif %}{% if next_post %}<a href="{{ next_post.url | relative_url }}">{{ next_post.title }} ▶</a>{% else %}<span class="mut">현재 마지막 글</span>{% endif %}</div>
+  {% endif %}
+  <nav class="crumb"><a href="/#projects">프로젝트</a>{% if p %}<span class="sep">/</span><a href="/projects/{{ p.id }}/log/">{{ p.name }}</a>{% endif %}{% if page.no %}<span class="sep">/</span>{{ page.no }}{% endif %}</nav>
+  <article class="art pxb">
+    <div class="meta">{% if p %}<span class="pj">{{ p.name }}</span>{% endif %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>{% if page.no %}<span>{{ page.no }}</span>{% endif %}</div>
+    <h1>{{ page.title }}</h1>
+    {% if page.tldr %}<blockquote class="tldr"><p><strong>TL;DR</strong> {{ page.tldr | escape }}</p></blockquote>{% endif %}
+    {% if previous_post %}<p class="ctx prev-ctx"><span class="lbl">앞 이야기</span>{% if page.previously %}{{ page.previously }} {% endif %}<a href="{{ previous_post.url | relative_url }}">◀ {{ previous_post.title }}</a></p>{% endif %}
+    <div class="body">{{ content }}</div>
+    {% if next_post %}<p class="ctx next-ctx"><span class="lbl">다음 이야기</span><a href="{{ next_post.url | relative_url }}">{{ next_post.title }} ▶</a></p>{% elsif p %}<p class="ctx next-ctx"><span class="lbl">다음 이야기</span>아직 없음. 지금까지의 마지막 글이다.</p>{% endif %}
+  </article>
+  {% if p %}
   <p><a href="/projects/{{ page.project }}/log/">{{ p.name }} 연재 전체 →</a></p>
   {% endif %}
 </main>

@@ -33,6 +33,10 @@ layout: default
   </section>
   {% endif %}
 
+  {% if page.stages %}
+  <div class="rule"></div>
+  {% include story.html stages=page.stages project=page.slug %}
+  {% else %}
   {% assign posts = site.posts | where: "project", page.slug %}
   <div class="rule"></div>
   <div class="rec">
@@ -41,5 +45,6 @@ layout: default
     <ul>{% for post in posts limit: 4 %}<li><a href="{{ post.url | relative_url }}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><span>{{ post.title }}</span></a></li>{% endfor %}</ul>
     {% else %}<p class="empty mut">아직 없음</p>{% endif %}
   </div>
+  {% endif %}
   <div><a href="/projects/{{ page.slug }}/log/" class="btn">항해 일지 전체 →</a></div>
 </main>

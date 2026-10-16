@@ -6,6 +6,19 @@ featured:
   - "/log/2026/09/11/nyam-testing-the-tests/"
   - "/log/2026/09/11/nyam-publish-observations/"
   - "/log/2026/09/22/nyam-catalog-completeness/"
+stages:
+  - key: "기"
+    name: "시작"
+    desc: "친구의 반복 작업을 덜기 위해, 무엇을 모으고 무엇을 기록할지 정했다."
+  - key: "승"
+    name: "첫 화면과 첫 배포"
+    desc: "모은 자료를 대조 결과로 만들고, 그 결과를 검증해 첫 배포와 운영 기록까지 갔다."
+  - key: "전"
+    name: "친구가 쓰기 시작하자"
+    desc: "실제 사용 요청과 운영 점검에서 틀리거나 빠진 데이터가 드러나 하나씩 고쳤다."
+  - key: "결"
+    name: "지금 하는 일"
+    desc: "브랜드를 계속 늘릴 수 있게 수집·검수·반영 과정을 다시 짜고 있다."
 ---
 ## 친구의 고양이를 돌보는 일에서 시작했다
 

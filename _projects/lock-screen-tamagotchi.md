@@ -6,6 +6,19 @@ featured:
   - "/log/2026/09/01/lockmagotchi-action-paths/"
   - "/log/2026/08/29/lockmagotchi-shared-state/"
   - "/log/2026/09/20/lockmagotchi-pause/"
+stages:
+  - key: "기"
+    name: "시작"
+    desc: "폰을 켜면 바로 만나는 다마고치를 구상하고, 앱·위젯·배경이 같은 상태를 보게 했다."
+  - key: "승"
+    name: "잠금화면에서 누르기"
+    desc: "잠금을 풀지 않고 돌볼 방법을 찾았고, 그 과정에서 Android 전용으로 좁혔다."
+  - key: "전"
+    name: "테마라는 상품"
+    desc: "테마를 계속 만들려 하자 그림을 규격에 맞추고 다듬는 비용이 드러났다."
+  - key: "결"
+    name: "멈춤"
+    desc: "낮아진 잠금화면 경험과 그림 제작비를 함께 보고 개발을 멈췄다."
 ---
 
 ## 폰을 켜는 순간 만나는 다마고치
