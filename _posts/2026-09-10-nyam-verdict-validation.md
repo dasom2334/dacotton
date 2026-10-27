@@ -1,6 +1,6 @@
 ---
-series_order: 8
-no: "08 / 29"
+series_order: 2
+no: "02 / 03"
 stage: "승"
 title: "모르는 성분을 괜찮다고 표시하지 않기"
 date: "2026-09-10"

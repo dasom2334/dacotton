@@ -29,3 +29,37 @@ exclude:
   - vendor
   - README.md
   - .claude
+  - _mistakes/2026-09-06-nyam-ocr-absence.md
+  - _mistakes/2026-09-11-nyam-historical-recipe.md
+  - _mistakes/2026-09-13-nyam-config-rollback.md
+  - _mistakes/2026-09-13-nyam-evidence-granularity.md
+  - _mistakes/2026-09-13-nyam-remote-db-roundtrips.md
+  - _mistakes/2026-09-28-nyam-transfer-quota.md
+  - _mistakes/2026-10-04-nyam-decimal-roundtrip.md
+  - _mistakes/2026-10-10-nyam-review-artifact-size.md
+  - _posts/2026-08-26-nyam-feeding-history.md
+  - _posts/2026-08-27-nyam-source-pipeline.md
+  - _posts/2026-08-30-nyam-profile-and-conditions.md
+  - _posts/2026-09-02-nyam-first-results.md
+  - _posts/2026-09-05-nyam-recording-loop.md
+  - _posts/2026-09-09-nyam-food-scope.md
+  - _posts/2026-09-11-nyam-publish-observations.md
+  - _posts/2026-09-11-nyam-testing-the-tests.md
+  - _posts/2026-09-13-nyam-avatar-coats.md
+  - _posts/2026-09-13-nyam-cost-and-abuse.md
+  - _posts/2026-09-13-nyam-first-deployment.md
+  - _posts/2026-09-13-nyam-infrastructure-choice.md
+  - _posts/2026-09-13-nyam-operational-observability.md
+  - _posts/2026-09-14-nyam-purchase-links.md
+  - _posts/2026-09-15-nyam-data-check.md
+  - _posts/2026-09-16-nyam-probe-404.md
+  - _posts/2026-09-16-nyam-row-size.md
+  - _posts/2026-09-20-nyam-data-quality-monitoring.md
+  - _posts/2026-09-20-nyam-refresh-recovery.md
+  - _posts/2026-09-21-nyam-community-beta.md
+  - _posts/2026-09-22-nyam-catalog-completeness.md
+  - _posts/2026-09-28-nyam-source-expansion.md
+  - _posts/2026-10-10-nyam-reproducible-brand-pipeline.md
+  - _posts/2026-10-11-nyam-catalog-release.md
+  - _posts/2026-10-12-nyam-brand-search.md
+  - _posts/2026-10-12-nyam-partial-source-publication.md
