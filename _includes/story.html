@@ -1,4 +1,4 @@
-{% comment %}연재를 기·승·전·결 단계로 묶어 이야기 순서(series_order)대로 보여 준다. include.stages, include.project{% endcomment %}
+{% comment %}연재를 주제별로 묶어 이야기 순서(series_order)대로 보여 준다. include.stages, include.project{% endcomment %}
 {% assign story_posts = site.posts | where: "project", include.project | sort: "series_order" %}
 <section class="story">
   <h2>연재 흐름</h2>
@@ -7,7 +7,7 @@
     {% assign in_stage = story_posts | where: "stage", st.key %}
     {% if in_stage.size > 0 %}
     <div class="stage">
-      <div class="sh"><span class="sk">{{ st.key }}</span><span class="sn">{{ st.name }}</span><span class="sc">{{ in_stage.size }}편</span></div>
+      <div class="sh"><span class="sn">{{ st.name }}</span><span class="sc">{{ in_stage.size }}편</span></div>
       <p class="sd">{{ st.desc }}</p>
       <ol>{% for post in in_stage %}<li><a href="{{ post.url | relative_url }}"><span class="no">{{ post.no | split: " /" | first }}</span><span class="t">{{ post.title }}</span><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%m.%d' }}</time></a></li>{% endfor %}</ol>
     </div>
