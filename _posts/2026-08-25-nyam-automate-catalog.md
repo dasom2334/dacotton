@@ -1,4 +1,5 @@
 ---
+reviewed_format: true
 series_order: 1
 no: "01 / 03"
 stage: "기"

@@ -1,4 +1,5 @@
 ---
+reviewed_format: true
 title: "고른 사료 넷을 같은 기준으로 비교하기"
 date: "2026-09-14"
 project: "nyam"

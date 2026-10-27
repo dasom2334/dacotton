@@ -1,4 +1,5 @@
 ---
+reviewed_format: true
 series_order: 2
 no: "02 / 03"
 stage: "승"

@@ -25,6 +25,7 @@ layout: default
     {% if page.points %}<div class="cell"><h2>어떻게 다른가</h2>{% for pt in page.points %}<p class="q">{{ pt }}</p>{% endfor %}</div>{% endif %}
   </div>
 
+  {% unless page.reviewed_format %}
   {% if page.featured %}
   <div class="rule"></div>
   <section class="feat">
@@ -46,5 +47,6 @@ layout: default
     {% else %}<p class="empty mut">아직 없음</p>{% endif %}
   </div>
   {% endif %}
+  {% endunless %}
   <div><a href="/projects/{{ page.slug }}/log/" class="btn">항해 일지 전체 →</a></div>
 </main>

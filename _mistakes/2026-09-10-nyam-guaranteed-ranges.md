@@ -1,4 +1,5 @@
 ---
+reviewed_format: true
 title: "최소 8%는 8%라는 뜻이 아니었다"
 date: "2026-09-10"
 project: "nyam"

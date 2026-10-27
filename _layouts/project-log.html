@@ -13,13 +13,11 @@ layout: default
     </div>
   </div>
   {% assign posts = site.posts | where: "project", page.slug | sort: "series_order" %}
-  {% assign pdoc = site.projects | where: "slug", page.slug | first %}{% assign last_stage = "" %}
   <div class="box pxb">
     <div class="lbl"><span>항해 일지 · {{ posts.size }}편</span></div>
     {% if posts.size > 0 %}
     <div class="route">
       {% for post in posts %}
-      {% if pdoc.stages and post.stage and post.stage != last_stage %}{% assign st = pdoc.stages | where: "key", post.stage | first %}<div class="stage-h">{{ st.name }}<p>{{ st.desc }}</p></div>{% assign last_stage = post.stage %}{% endif %}
       <a href="{{ post.url | relative_url }}" class="ent{% if forloop.first %} on{% endif %}"><time>{{ post.date | date: '%Y-%m-%d' }}</time><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
       {% endfor %}
     </div>
