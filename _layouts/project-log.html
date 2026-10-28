@@ -13,7 +13,7 @@ layout: default
     </div>
   </div>
   {% assign posts = site.posts | where: "project", page.slug %}
-  {% assign posts = posts | sort: "url" | reverse %}
+  {% assign posts = posts | sort: "url" | sort: "date" | reverse %}
   <div class="box pxb">
     <div class="lbl"><span>{% if page.updates_only %}업데이트 · {{ posts.size }}건{% else %}항해 일지 · {{ posts.size }}편{% endif %}</span></div>
     {% if posts.size > 0 %}
