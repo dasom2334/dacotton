@@ -13,7 +13,10 @@ layout: default
     </div>
   </div>
   {% assign posts = site.posts | where: "project", page.slug %}
-  {% assign posts = posts | sort: "url" | sort: "date" | reverse %}
+  {% assign date_groups = posts | group_by_exp: "entry", "entry.date | date: '%Y%m%d%H%M%S'" | sort: "name" %}
+  {% assign posts = "" | split: "," %}
+  {% for date_group in date_groups %}{% assign same_date = date_group.items | sort: "url" %}{% assign posts = posts | concat: same_date %}{% endfor %}
+  {% assign posts = posts | reverse %}
   <div class="box pxb">
     <div class="lbl"><span>{% if page.updates_only %}업데이트 · {{ posts.size }}건{% else %}항해 일지 · {{ posts.size }}편{% endif %}</span></div>
     {% if posts.size > 0 %}

@@ -5,7 +5,9 @@ layout: default
 {% include header.html %}
 <main class="page doc">
   {% if p %}
-  {% assign series_posts = site.posts | where: "project", page.project | sort: "url" | sort: "date" %}
+  {% assign date_groups = site.posts | where: "project", page.project | group_by_exp: "entry", "entry.date | date: '%Y%m%d%H%M%S'" | sort: "name" %}
+  {% assign series_posts = "" | split: "," %}
+  {% for date_group in date_groups %}{% assign same_date = date_group.items | sort: "url" %}{% assign series_posts = series_posts | concat: same_date %}{% endfor %}
   {% assign previous_post = nil %}{% assign next_post = nil %}
   {% for installment in series_posts %}
     {% if installment.url == page.url %}
