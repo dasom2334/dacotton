@@ -5,7 +5,7 @@ layout: default
 {% include header.html %}
 <main class="page doc">
   {% if p %}
-  {% assign series_posts = site.posts | where: "project", page.project | sort: "date" %}
+  {% assign series_posts = site.posts | where: "project", page.project | sort: "url" %}
   {% assign previous_post = nil %}{% assign next_post = nil %}
   {% for installment in series_posts %}
     {% if installment.url == page.url %}
