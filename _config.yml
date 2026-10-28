@@ -63,3 +63,11 @@ exclude:
   - _posts/2026-10-11-nyam-catalog-release.md
   - _posts/2026-10-12-nyam-brand-search.md
   - _posts/2026-10-12-nyam-partial-source-publication.md
+
+  - _mistakes/2026-10-28-nyam-ingredient-match-order.md
+  - _mistakes/2026-10-28-nyam-ocr-review-scope.md
+  - _mistakes/2026-10-28-nyam-immutable-source-history.md
+
+  - _mistakes/2026-09-10-nyam-guaranteed-ranges.md
+  - _mistakes/2026-10-28-nyam-past-feeding-snapshot.md
+  - _mistakes/2026-10-28-nyam-missing-calorie-extraction.md

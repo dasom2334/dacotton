@@ -27,8 +27,8 @@
   my: 16
 - id: substitue-doll
   name: 대타출동 인형
-  status: 1차 완성 · 중단
-  desc: 과거 대화로 말투를 배워, 대답하기 곤란할 때 대신 답을 지어 주는 AI 에이전트.
+  status: 1차 구현 · 중단
+  desc: 과거 발화를 찾아 답장 초안을 만드는 도구. 개인용 1차 구현 뒤 추가 개발을 멈췄다.
   github: https://github.com/dasom2334/substitue-doll
   x: 64
   y: 26

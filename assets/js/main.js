@@ -64,11 +64,14 @@
         var f = b.dataset.filter;
         btns.forEach(function (x) { x.classList.toggle('on', x === b); });
         var n = 0;
-        rows.forEach(function (r) { var show = !f || r.dataset.project === f; r.hidden = !show; if (show && r.classList.contains('row')) n++; });
+        rows.forEach(function (r) { var show = !f || r.dataset.project === f; r.hidden = !show || (r.classList.contains('detail') && !r.previousElementSibling.classList.contains('open')); if (show && r.classList.contains('row')) n++; });
         if (count) count.textContent = n;
         $$('.month').forEach(function (m) { var route = m.nextElementSibling; m.hidden = !!route && !$$('.ent:not([hidden])', route).length; });
       });
     });
+    var initialProject = new URLSearchParams(window.location.search).get('project');
+    var initialButton = btns.find(function (b) { return b.dataset.filter === initialProject; });
+    if (initialButton) initialButton.click();
   }
 
   // 오답노트: 줄을 누르면 그 자리에서 펼침

@@ -15,7 +15,11 @@ permalink: /log/
     <div class="month">{{ m.name }}</div>
     <div class="route">
       {% for post in m.items %}{% assign p = site.data.projects | where: "id", post.project | first %}
-      <a href="{{ post.url | relative_url }}" class="ent" data-project="{{ post.project }}"><time>{{ post.date | date: '%m-%d' }}</time><span class="pj">{{ p.name | default: post.project }}</span><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if post.summary %}<p class="sum">{{ post.summary }}</p>{% endif %}</div></a>
+      {% if post.update_log %}
+      <div class="ent" data-project="{{ post.project }}"><time>{{ post.date | date: '%m-%d' }}</time><span class="pj">{{ p.name | default: post.project }}</span><div><a class="t" href="{{ post.url | relative_url }}">{{ post.title }}</a><div class="body">{{ post.content | markdownify }}</div></div></div>
+      {% else %}
+      <a href="{{ post.url | relative_url }}" class="ent" data-project="{{ post.project }}"><time>{{ post.date | date: '%m-%d' }}</time><span class="pj">{{ p.name | default: post.project }}</span><div>{% if post.no %}<span class="no">{{ post.no }}</span>{% endif %}<span class="t">{{ post.title }}</span>{% if post.summary %}<p class="sum">{{ post.summary | strip_html | truncate: 110 }}</p>{% endif %}</div></a>
+      {% endif %}
       {% endfor %}
     </div>
     {% endfor %}

@@ -5,7 +5,7 @@ layout: default
 {% include header.html %}
 <main class="page doc">
   {% if p %}
-  {% assign series_posts = site.posts | where: "project", page.project | sort: "series_order" %}
+  {% assign series_posts = site.posts | where: "project", page.project | sort: "date" %}
   {% assign previous_post = nil %}{% assign next_post = nil %}
   {% for installment in series_posts %}
     {% if installment.url == page.url %}
@@ -19,11 +19,11 @@ layout: default
     <div class="meta">{% if p %}<span class="pj">{{ p.name }}</span>{% endif %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>{% if page.no %}<span>{{ page.no }}</span>{% endif %}</div>
     <h1>{{ page.title }}</h1>
     {% if page.tldr %}<blockquote class="tldr"><p><strong>TL;DR</strong> {{ page.tldr | escape }}</p></blockquote>{% endif %}
-    {% if previous_post and page.reviewed_format != true %}<p class="ctx prev-ctx"><span class="lbl">앞 이야기</span>{% if page.previously %}{{ page.previously }} {% endif %}<a href="{{ previous_post.url | relative_url }}">◀ {{ previous_post.title }}</a></p>{% endif %}
+    {% if previous_post and page.reviewed_format != true %}<p class="ctx prev-ctx"><span class="lbl">앞 이야기</span><a href="{{ previous_post.url | relative_url }}">◀ {{ previous_post.title }}</a></p>{% endif %}
     <div class="body">{{ content }}</div>
     {% if page.reviewed_format != true %}{% if next_post %}<p class="ctx next-ctx"><span class="lbl">다음 이야기</span><a href="{{ next_post.url | relative_url }}">{{ next_post.title }} ▶</a></p>{% elsif p %}<p class="ctx next-ctx"><span class="lbl">다음 이야기</span>아직 없음. 지금까지의 마지막 글이다.</p>{% endif %}{% endif %}
   </article>
   {% if p %}
-  <p><a href="/projects/{{ page.project }}/log/">{{ p.name }} 연재 전체 →</a></p>
+  <p><a href="/projects/{{ page.project }}/log/">{{ p.name }} {% if page.update_log %}업데이트 전체{% else %}연재 전체{% endif %} →</a></p>
   {% endif %}
 </main>

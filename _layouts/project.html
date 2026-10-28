@@ -48,5 +48,7 @@ layout: default
   </div>
   {% endif %}
   {% endunless %}
-  <div><a href="/projects/{{ page.slug }}/log/" class="btn">항해 일지 전체 →</a></div>
+  {% unless page.hide_log_links %}
+  <div class="acts"><a href="/projects/{{ page.slug }}/log/" class="btn">로그 목록 →</a>{% assign project_mistakes = site.mistakes | where: "project", page.slug %}{% if project_mistakes.size > 0 %}<a href="{{ "/mistakes/" | relative_url }}?project={{ page.slug | url_encode }}" class="btn">오답노트 목록 →</a>{% endif %}</div>
+  {% endunless %}
 </main>
