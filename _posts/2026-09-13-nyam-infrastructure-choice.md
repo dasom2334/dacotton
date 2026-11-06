@@ -1,13 +1,12 @@
 ---
 series_order: 11
-no: "11 / 29"
-stage: "승"
+no: "11 / 31"
 previously: "저장한 해석의 재계산을 확인하는 테스트가 구현을 빼도 통과하는지 일부러 확인했다."
 title: "최대 200명의 베타를 위해 무엇에 돈을 쓰지 않을지 정했다"
 date: "2026-09-13"
 project: "nyam"
-summary: "수익을 확인하기 전인 최대 200명 베타에서 상시 가동비를 먼저 내고 싶지 않았다. 작은 VM, Cloud Run+Cloud SQL, Cloud Run+Neon Free를 실제 세팅과 함께 비교해, 앱과 DB가 쉴 때 비용이 거의 없는 Cloud Run+Neon을 골랐다. 대신 첫 요청 지연과 무료 한도, 서비스 밖 백업 관리를 감수했고, 이후 운영 작업이 전송 한도를 소진하면서 비용 가정을 다시 보게 됐다."
-tldr: "수익을 확인하기 전인 최대 200명 베타에서 상시 가동비를 먼저 내고 싶지 않았다. 작은 VM, Cloud Run+Cloud SQL, Cloud Run+Neon Free를 실제 세팅과 함께 비교해, 앱과 DB가 쉴 때 비용이 거의 없는 Cloud Run+Neon을 골랐다. 대신 첫 요청 지연과 무료 한도, 서비스 밖 백업 관리를 감수했고, 이후 운영 작업이 전송 한도를 소진하면서 비용 가정을 다시 보게 됐다."
+summary: "작은 베타의 상시 비용을 줄이려고 Cloud Run과 Neon을 골랐다."
+tldr: "작은 VM, Cloud Run+Cloud SQL, Cloud Run+Neon을 실제 세팅과 함께 비교했다. 유휴 비용이 거의 없는 Cloud Run과 Neon을 골랐고, 첫 요청 지연·무료 한도·별도 백업 관리를 감수했다."
 review_status: "로컬 원고 · 검수 대기"
 ---
 

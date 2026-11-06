@@ -18,6 +18,6 @@ layout: default
     {% if page.cause %}<div class="sec"><span class="k">원인</span><div>{{ page.cause | markdownify }}</div></div>{% endif %}
     {% if page.fix %}<div class="sec fix"><span class="k">해결</span><div>{{ page.fix | markdownify }}</div></div>{% endif %}
     {% if page.lesson %}<div class="sec next"><span class="k">다음엔</span><div class="lesson">{{ page.lesson | markdownify }}</div></div>{% endif %}
-    {% if content != "" %}<div class="sec"><span class="k">덧붙임</span><div>{{ content }}</div></div>{% endif %}
+    {% if content != "" %}{% if page.reviewed_format %}<div class="body">{{ content }}</div>{% else %}<div class="sec"><span class="k">덧붙임</span><div>{{ content }}</div></div>{% endif %}{% endif %}
   </article>
 </main>
